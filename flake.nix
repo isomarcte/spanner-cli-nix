@@ -1,7 +1,7 @@
 {
   description = "Spanner CLI Nix Package";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
@@ -21,7 +21,8 @@
       perSystem =
         { config, pkgs, ... }:
         {
-          packages.spanner-cli = pkgs.callPackage ./spanner-cli.nix { };
+          packages.default = pkgs.callPackage ./spanner-cli.nix { };
+          overlayAttrs.spanner-cli = config.packages.default;
           treefmt = {
             projectRootFile = "flake.nix";
             programs.nixfmt.enable = true;

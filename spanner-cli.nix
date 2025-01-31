@@ -1,22 +1,22 @@
 {
-  stdenv,
-  pkgs,
-  lib,
   fetchFromGitHub,
+  buildGoModule,
 }:
 
 let
-  version = "0.10.5";
+  version = "0.10.9";
+  revSha = "sha256-DNZ/56nl/nCmy/cFZu5bZYT2ixUqptKCBXf9ZhU8Z7U=";
+  vendorHash = "sha256-BHVQKPsGvHBIU8g0YU+ElHdHleCQRkelxh7hTdgpdF8=";
 in
-pkgs.buildGoModule {
+buildGoModule {
   inherit version;
   pname = "spanner-cli";
   src = fetchFromGitHub {
     owner = "cloudspannerecosystem";
     repo = "spanner-cli";
     rev = "v${version}";
-    sha256 = "sha256-4umtZFsEYu0JI4l3PT4A3KPpemjVPwQMweU5j/dcnNs=";
+    sha256 = revSha;
   };
-  vendorHash = "sha256-m6/M9gD+iRAmS4tQ+tHoqWzI8mZTN1RUuqCYaPTsSK8=";
+  inherit vendorHash;
   patches = [ ./spanner-cli-0.10.5-tidy.patch ];
 }
