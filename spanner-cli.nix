@@ -4,8 +4,8 @@
 }:
 
 let
-  version = "0.10.10";
-  revSha = "sha256-W1+3RBoRuZMHbAYodN/O8G5XA6zUYtbbSXKLcDFL3NI=";
+  version = "0.11.1";
+  revSha = "sha256-IWQGGgREMV1DLWcbMG5odsl+JDeV/42XsQM95ICh8vM=";
   vendorHash = "sha256-0y6EGi3mUSYhk/3DeE2RLZgJY+h5oV4R/k8wSJla4GE=";
 in
 buildGoModule {
